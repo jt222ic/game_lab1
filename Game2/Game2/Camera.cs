@@ -12,14 +12,22 @@ namespace Game2
     {
        private int sizeOfTile = 64;
         private int borderSize = 64;
-        private int visualX;
-        private int visualY;
         private float scaleX;
         private float scaleY;
+        private float virtualWidth = 1;
+        private float virtualHeight = 1;
         public float scale = 1;
 
+        public Camera(int width, int height, float virtualWidth = 1, float virtualHeight = 1)
+        {
+            this.virtualHeight = virtualHeight;
+            this.virtualWidth = virtualWidth;
 
-        public Vector2 VisualCordination(int x, int y)
+            scaleX = (float)(width - borderSize * 2) / virtualWidth ;
+            scaleY = (float)(height - borderSize * 2) / virtualHeight;
+        }
+
+        public Vector2 VisualCordination(float x, float y)
         {
             //Logisk koordinat |Visuell koordinat | by adding the alogritm under
             //0,0              | 64, 64
@@ -27,8 +35,8 @@ namespace Game2
             //1,7              | 128, 512
             //7,7              | 512, 512
 
-            visualX = borderSize + x * sizeOfTile;
-            visualY = borderSize + y * sizeOfTile;
+            int visualX = (int)(borderSize + x * scaleX);
+            int visualY = (int)(borderSize + y * scaleY);
 
             return new Vector2(visualX, visualY);
         }
@@ -41,38 +49,16 @@ namespace Game2
             //6,0              |  128,512
             //2,7              |  384, 64
             //7,7              |  64,64
-            visualX = (sizeOfTile * 8 + borderSize - sizeOfTile) - (x * sizeOfTile);   // rotation alogaritm of 8 tiles
-            visualY = (sizeOfTile * 8 + borderSize - sizeOfTile) - (y * sizeOfTile);
+            float visualX = (sizeOfTile * 8 + borderSize - sizeOfTile) - (x * sizeOfTile);   // rotation alogaritm of 8 tiles
+            float visualY = (sizeOfTile * 8 + borderSize - sizeOfTile) - (y * sizeOfTile);
 
             return new Vector2(visualX, visualY);
 
         }
-        public void ScaleObject(Viewport port)
+        public Vector2 ScaleObject( int width, int height)
         {
-            // viewport//
-             scaleX = port.Width / (sizeOfTile * 8  + borderSize*2);
-             scaleY = port.Height / (sizeOfTile * 8  + borderSize *2);
-
-            if(scaleX<scaleY)
-            {
-                 scale = scaleX;
-            }
-            else if (scaleX>scaleY)
-            {
-                scale = scaleY;
-            }
-           
+            return new Vector2( scaleX / width, scaleY / height);
         }
-        public float scaleOfPiece(float height, float width)
-        {
-            
-            float scale = (sizeOfTile / height) + (sizeOfTile / width);
-            scale = scale / 2;
-            return scale;
-
-            
-        }
-
-
+      
     }
     }

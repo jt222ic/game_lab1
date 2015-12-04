@@ -20,9 +20,9 @@ namespace Game2
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            camera = new Camera();
-           graphics.PreferredBackBufferWidth = 640;    // windows width 
-           graphics.PreferredBackBufferHeight = 640;   // windwos height
+           graphics.PreferredBackBufferWidth = 240;    // windows width 
+           graphics.PreferredBackBufferHeight = 600;   // windwos height
+            camera = new Camera(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight,8,8);  // 8 brickcs scaling to fit on screen if lower the other will get outside screen
 
 
         }
@@ -48,7 +48,6 @@ namespace Game2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             // camera.ScaleObject(graphics);
-            camera.ScaleObject(graphics.GraphicsDevice.Viewport);
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Whitebox = Content.Load<Texture2D>("White");
             Blackbox = Content.Load<Texture2D>("Black");
@@ -95,19 +94,22 @@ namespace Game2
                 {
                     if (a % 2 == 0)
                     {
-                        spriteBatch.Draw(Whitebox, camera.VisualCordination(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
-                       
+                        spriteBatch.Draw(Whitebox, camera.VisualCordination(x, y), null, Color.White, 0, new Vector2(0, 0), camera.ScaleObject(Whitebox.Width, Whitebox.Height), SpriteEffects.None, 0);
+                       // spriteBatch.Draw(Whitebox, camera.RotationCordination(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+
                     }
                     else
                     {
-                        spriteBatch.Draw(Blackbox, camera.VisualCordination(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
+                        spriteBatch.Draw(Blackbox, camera.VisualCordination(x, y), null, Color.White, 0, new Vector2(0, 0), camera.ScaleObject(Blackbox.Width, Blackbox.Height), SpriteEffects.None, 0);
+                       // spriteBatch.Draw(Blackbox, camera.RotationCordination(x, y), null, Color.White, 0, new Vector2(0, 0), camera.scale, SpriteEffects.None, 0);
                     }
                     a++;
                 }
                 a++;
             }
-            float resize = camera.scaleOfPiece(chessPiece.Height, chessPiece.Width);
-            spriteBatch.Draw(chessPiece, camera.VisualCordination(0,0), null, Color.White, 0, new Vector2(0, 0), resize, SpriteEffects.None, 0);
+            //float resize = camera.scaleOfPiece(chessPiece.Height, chessPiece.Width);
+            spriteBatch.Draw(chessPiece, camera.VisualCordination(0,0), null, Color.White, 0, new Vector2(0, 0), camera.ScaleObject(chessPiece.Width, chessPiece.Height), SpriteEffects.None, 0);
+            //spriteBatch.Draw(chessPiece, camera.RotationCordination(0, 0), null, Color.White, 0, new Vector2(0, 0), resize, SpriteEffects.None, 0);
             spriteBatch.End();
            
             base.Draw(gameTime);

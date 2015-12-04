@@ -9,7 +9,7 @@ namespace Ballsimulation.View
 {
     class Camera
     {
-        private int sizeOfftheField = 250;
+        private float sizeOfftheField =250;
         private int bordersize = 64;
         public float scale;
         private float scaleX;
@@ -44,8 +44,8 @@ namespace Ballsimulation.View
 
         public float ScaleObject( int width, float radius)   // scale 10% of the screeen size
         {
-             scale = 2 * radius * sizeOfftheField / (float)width;
-            return scale;
+            return sizeOfftheField * 2 * radius / (float)width;
+             
         }
 
 

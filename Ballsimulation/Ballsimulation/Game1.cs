@@ -22,8 +22,8 @@ namespace Ballsimulation
         {
             graphics = new GraphicsDeviceManager(this);
             camera = new Camera();
-           // graphics.PreferredBackBufferWidth = 660;
-           // graphics.PreferredBackBufferHeight = 660;
+            graphics.PreferredBackBufferWidth = 500;
+            graphics.PreferredBackBufferHeight = 320;
             graphics.ApplyChanges();
             Content.RootDirectory = "Content";
                  
