@@ -11,7 +11,7 @@ namespace Game2
     class Camera
     {
        private int sizeOfTile = 64;
-        private int borderSize = 64;
+        private int borderSize = 10;
         private float scaleX;
         private float scaleY;
         private float virtualWidth = 1;

@@ -20,8 +20,8 @@ namespace Game2
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-           graphics.PreferredBackBufferWidth = 240;    // windows width 
-           graphics.PreferredBackBufferHeight = 600;   // windwos height
+           graphics.PreferredBackBufferWidth = 320;    // windows width 
+           graphics.PreferredBackBufferHeight = 240;   // windwos height
             camera = new Camera(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight,8,8);  // 8 brickcs scaling to fit on screen if lower the other will get outside screen
 
 
