@@ -50,9 +50,12 @@ namespace Ballsimulation
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             camera.ScaleEverything(graphics.GraphicsDevice.Viewport);
-            ballsimulation = new BallSimulation();
+            
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            ballview = new BallView(Content, ballsimulation, graphics);
+            
+                ballsimulation = new BallSimulation();
+                ballview = new BallView(Content, ballsimulation, graphics);
+            
             
 
             // TODO: use this.Content to load your game content here
@@ -90,7 +93,10 @@ namespace Ballsimulation
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            ballview.Draw(spriteBatch, camera);
+            
+                ballview.Draw(spriteBatch, camera);
+              
+
 
             // TODO: Add your drawing code here
 

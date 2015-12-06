@@ -14,7 +14,9 @@ namespace Ballsimulation.Model
         
         public BallSimulation()
         {
-            ballinstance = new Ball();
+            
+                ballinstance = new Ball();
+            
         }   
         public Vector2 position()
         {
@@ -32,6 +34,7 @@ namespace Ballsimulation.Model
             Ballbounching();
             ballinstance.movingtheball(time);
             
+
         }
 
         public void Ballbounching()

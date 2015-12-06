@@ -16,11 +16,12 @@ namespace Ballsimulation.Model
         // skapa bollens egenskaper 
         // vector Ball cordination = going x and y axel//
 
+        
 
         public float Ballsize = 0.05f;
         private Vector2 BallCordination = new Vector2(0.5f,0.2f);
         private Vector2 Ballspeed = new Vector2(0.4f,0.4f);
-       
+        
 
 
         public Vector2 GetBallSpeed

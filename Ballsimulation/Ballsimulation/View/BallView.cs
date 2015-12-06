@@ -43,13 +43,14 @@ namespace Ballsimulation.View
             spriteBatch.Draw(background, camera.getGameArea(), Color.HotPink);
             Vector2 ballanimation = b_ballsimunlation.position();
 
-            var ballposition = camera.VisualCoord(b_ballsimunlation.GetBalls().BallPosition.X - b_ballsimunlation.GetBalls().Ballsize, b_ballsimunlation.GetBalls().BallPosition.Y - b_ballsimunlation.GetBalls().Ballsize);
-            float scale = camera.ScaleObject(ball.Width, b_ballsimunlation.GetBalls().Ballsize);
-            spriteBatch.Draw(ball, ballposition, null, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0);
-
+            Random rand = new Random();
 
             
-
+            var ballposition = camera.VisualCoord(b_ballsimunlation.GetBalls().BallPosition.X - b_ballsimunlation.GetBalls().Ballsize, b_ballsimunlation.GetBalls().BallPosition.Y - b_ballsimunlation.GetBalls().Ballsize);
+            float scale = camera.ScaleObject(ball.Width, b_ballsimunlation.GetBalls().Ballsize);
+           
+            spriteBatch.Draw(ball, ballposition, null, Color.White, 0, new Vector2(0, 0), scale, SpriteEffects.None, 0);
+            
 
             // innehållet.
             spriteBatch.End();
